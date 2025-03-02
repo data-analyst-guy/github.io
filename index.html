@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Cá Nhân</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
-        .container { margin-top: 100px; }
-        h1 { color: #333; }
-    </style>
+    <title>My Portfolio - Data Analyst</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Xin chào! Tôi là [Tên của bạn]</h1>
-        <p>Đây là trang cá nhân của tôi.</p>
-    </div>
+    <header>
+        <h1>Xin chào! Tôi là <span id="username">Your Name</span></h1>
+        <p>Data Analyst | Machine Learning Enthusiast | SQL & Python Expert</p>
+    </header>
+
+    <section class="about">
+        <h2>Giới thiệu</h2>
+        <p>Tôi là một Data Analyst với niềm đam mê về phân tích dữ liệu, trực quan hóa, và xây dựng mô hình dự đoán.</p>
+    </section>
+
+    <section class="projects">
+        <h2>Dự Án Của Tôi</h2>
+        <div id="repo-list">Loading...</div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 by <span id="username-footer">Your Name</span>. All rights reserved.</p>
+    </footer>
 </body>
 </html>
