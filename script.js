@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const username = "your-username";  // 🔥 Thay "your-username" bằng GitHub username của bạn
+    const username = "phammanhsang";  // 🔥 Thay "your-username" bằng GitHub username của bạn
     const repoList = document.getElementById("repo-list");
 
     fetch(`https://api.github.com/users/${username}/repos`)
