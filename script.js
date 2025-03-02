@@ -1,34 +1,22 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: linear-gradient(to right, #2c3e50, #4ca1af);
-    color: white;
-    margin: 0;
-    padding: 0;
-}
-header {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5);
-}
-h1, h2 {
-    color: #f1c40f;
-}
-.projects {
-    margin-top: 30px;
-}
-#repo-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.repo {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    width: 200px;
-}
-a {
-    color: #f1c40f;
-    text-decoration: none;
-}
+document.addEventListener("DOMContentLoaded", function () {
+    const username = "your-username"; // Thay bằng GitHub username của bạn
+    document.getElementById("username").textContent = username;
+    document.getElementById("username-footer").textContent = username;
+
+    fetch(`https://api.github.com/users/${username}/repos`)
+        .then(response => response.json())
+        .then(data => {
+            const repoList = document.getElementById("repo-list");
+            repoList.innerHTML = ""; // Xóa chữ "Loading..."
+            data.forEach(repo => {
+                if (repo.name !== username + ".github.io") {  // Ẩn repo chứa website cá nhân
+                    let repoDiv = document.createElement("div");
+                    repoDiv.classList.add("repo");
+                    repoDiv.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
+                    repoList.appendChild(repoDiv);
+                }
+            });
+        })
+        .catch(error => console.error("Error fetching repos:", error));
+});
+
