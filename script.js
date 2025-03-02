@@ -1,22 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const username = "your-username"; // Thay bằng GitHub username của bạn
-    document.getElementById("username").textContent = username;
-    document.getElementById("username-footer").textContent = username;
+    const username = "your-username";  // 🔥 Thay "your-username" bằng GitHub username của bạn
+    const repoList = document.getElementById("repo-list");
 
     fetch(`https://api.github.com/users/${username}/repos`)
         .then(response => response.json())
-        .then(data => {
-            const repoList = document.getElementById("repo-list");
-            repoList.innerHTML = ""; // Xóa chữ "Loading..."
-            data.forEach(repo => {
-                if (repo.name !== username + ".github.io") {  // Ẩn repo chứa website cá nhân
-                    let repoDiv = document.createElement("div");
-                    repoDiv.classList.add("repo");
-                    repoDiv.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
-                    repoList.appendChild(repoDiv);
+        .then(repos => {
+            repos.forEach(repo => {
+                if (repo.name !== "your-username.github.io") {  // 🔥 Ẩn repo tạo GitHub Pages
+                    const repoItem = document.createElement("li");
+                    repoItem.innerHTML = `<a href="${repo.html_url}" target="_blank">${repo.name}</a>`;
+                    repoList.appendChild(repoItem);
                 }
             });
         })
-        .catch(error => console.error("Error fetching repos:", error));
+        .catch(error => console.error("Lỗi khi lấy danh sách repo:", error));
 });
-
